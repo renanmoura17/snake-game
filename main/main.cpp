@@ -2,23 +2,23 @@
 
 using namespace std;
 
-//Vari·vel utilizada para verificar se o jogo foi finalizado ou n„o
+//Vari√°vel utilizada para verificar se o jogo foi finalizado ou n√£o
 bool gameOver;
 
-//Dimensıes do mapa do jogo
+//Dimens√µes do mapa do jogo
 const int largura = 20;
 const int altura = 20;
 
-//PosiÁ„o da cabeÁa
+//Posi√ß√£o da cabe√ßa
 int x, y;
 
-//PosiÁ„o da fruta
+//Posi√ß√£o da fruta
 int frutaX, frutaY;
 
 //Total de pontos
 int score;
 
-//DireÁıes que podem ser tomadas pela cobra
+//Dire√ß√µes que podem ser tomadas pela cobra
 enum eDirecao {
 	PARADA = 0,
 	ESQUERDA,
@@ -27,10 +27,10 @@ enum eDirecao {
 	BAIXO
 };
 
-//DireÁ„o atual da cobra
+//Dire√ß√£o atual da cobra
 eDirecao direcao;
 
-//FunÁ„o respons·vel pela inicializaÁ„o do jogo
+//Fun√ß√£o respons√°vel pela inicializa√ß√£o do jogo
 void Setup() {
 	
 	gameOver = false;
@@ -46,7 +46,7 @@ void Setup() {
 	score = 0;
 }
 
-//Desenha as informaÁıes na tela
+//Desenha as informa√ß√µes na tela
 void Draw () {
 	
 	system("cls");
@@ -62,20 +62,27 @@ void Draw () {
 		
 		for (int j = 0; j < largura; j++)
 		{
-			//Quando passar pelo primeiro ponto da linha (que È uma parede), imprime "#"
+			//Quando passar pelo primeiro ponto da linha (que √© uma parede), imprime "#"
 			if ( j == 0 ) {
 				cout << "#";
 			} 
 
-			cout << " ";
+			//Se encontrar as coordenadas definidas para a cabe√ßa, ent√£o a desenha no mapa
+			if ( i == y && j == x ) {
+				cout << "O";
+			}  else if ( i == frutaX && j == frutaY ) {
+				cout << "F";
+			} else {
+				cout << " ";
+			}
 
-			//Quando chegar no ˙ltimo ponto da linha (que È uma parede), imprime "#"
+			//Quando chegar no √∫ltimo ponto da linha (que √© uma parede), imprime "#"
 			if ( j == ( largura - 1 ) ) {
 				cout << "#";
 			}
 		}
 
-		//ComeÁa a imprimir o restante na prÛxima linha
+		//Come√ßa a imprimir o restante na pr√≥xima linha
 		cout << endl;
 	}
 
